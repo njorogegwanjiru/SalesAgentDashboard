@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="header">
+        <app-navbar-component></app-navbar-component>
+    </div>
+    <div class="content">
+        <div class="outer-card">
+            <div class="floating-card">
+                <div class="text-start tableLabels">
+                    <h3>Invoices</h3>
+                    <p>All registered invoices</p>
+                </div>
+            </div>
+            <!-- Search and Filter row -->
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Search by invoice number, item...e.t.c"
+                        [(ngModel)]="searchText" (input)="applySearch()">
+                </div>
+
+                <div class="col position-relative">
+                    <select class="form-control" [(ngModel)]="selectedFilter" (change)="applyFilter()">
+                        <option value="all">All invoices</option>
+                        <option value="overdue">Partially Paid</option>
+                        <option value="unpaid">Unpaid </option>
+                        <option value="paid">Paid</option>
+                    </select>
+                    <i class="fa fa-caret-down dropdown-icon"></i>
+                </div>
+
+
+                <div class="col text-right">
+                    <button type="button" class="btn btn-primary custom-btn d-none d-md-inline"
+                        (click)="openCreateInvoiceDialog()"><i class="fa fa-plus"></i> Create New</button>
+                    <button type="button" class="btn btn-primary custom-btn d-md-none"
+                        (click)="openCreateInvoiceDialog()">
+                        <i class="fa fa-plus"></i> New</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+
+
+                <!-- Invoice Table -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Invoice #</th>
+                            <th>Item</th>
+                            <th>Creation Date</th>
+                            <th>Due Date</th>
+                            <th>Amount</th>
+                            <th>Paid Amount</th>
+                            <th>Balance</th>
+                            <th>Status</th>
+                            <th>Due In</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let invoice of filteredInvoices">
+                            <td>{{ invoice.invoiceNumber }}</td>
+                            <td>{{ invoice.invoiceItem }}</td>
+                            <td>{{ invoice.creationDate | date }}</td>
+                            <td>{{ invoice.dueDate | date }}</td>
+                            <td>{{ invoice.amount }}</td>
+                            <td>{{ invoice.paidAmount }}</td>
+                            <td>{{ invoice.balance }}</td>
+                            <td>{{ invoice.completionStatus }}</td>
+                            <td>{{ invoice.daysUntilDue }} days</td>
+                            <td>
+                                <!-- Edit button -->
+                                <button type="button" class="btn btn-primary custom-btn d-none d-md-inline"
+                                    style="margin: 4px;" (click)="openEditInvoiceDialog(invoice)">Edit</button>
+                                <button type="button" class="btn btn-primary custom-btn d-md-none" style="margin: 4px;"
+                                    (click)="openEditInvoiceDialog(invoice)">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+
+                                <!-- Delete button -->
+                                <button type="button" class="btn btn-danger custom-btn d-none d-md-inline"
+                                    style="margin: 4px;" (click)="deleteInvoice(invoice.id)">Delete</button>
+                                <button type="button" class="btn btn-danger custom-btn d-md-none" style="margin: 4px;"
+                                    (click)="deleteInvoice(invoice.id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+                                <!-- Add Collection button -->
+                                <button type="button" class="btn btn-success custom-btn d-none d-md-inline"
+                                    style="margin: 4px;" (click)="openCollectInvoiceDialog(invoice)">Add Collection</button>
+                                <button type="button" class="btn btn-success custom-btn d-md-none" style="margin: 4px;"
+                                    (click)="openCollectInvoiceDialog(invoice)">
+                                    <i class="fa fa-money"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>

@@ -1,1 +1,508 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1,
+h2 {
+    color: #444;
+}
+
+h3 {
+    color: #999;
+}
+
+.btn {
+    background: #ff9100;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+
+}
+
+/* Remove default Bootstrap button styles */
+.btn.btn-primary.custom-btn,
+.btn.btn-danger.custom-btn,
+.btn.btn-success.custom-btn,
+.btn.btn-warning.custom-btn {
+    background-color: transparent;
+    font-weight: light;
+    font-size: 16px;
+    border-width: 1px;
+
+    color: inherit;
+    justify-content: center;
+}
+
+/* Blue color for Edit button */
+.btn.btn-primary.custom-btn {
+    color: #2fa5de;
+    border-color: #2fa5de;
+}
+
+/* Red color for Delete button */
+.btn.btn-danger.custom-btn {
+    color: rgb(193, 44, 44);
+}
+
+.btn.btn-success.custom-btn {
+    color: #1c8756;
+}
+
+.btn.btn-warning.custom-btn {
+    color: rgb(224, 151, 25);
+}
+
+/* Remove hover effect for Edit button */
+.btn.btn-primary.custom-btn:hover {
+    color: #fff;
+    background: #2fa5de;
+    border: none;
+}
+
+/* Remove hover effect for Delete button */
+.btn.btn-danger.custom-btn:hover {
+    color: #fff;
+    background: rgb(193, 44, 44);
+    border: none;
+}
+
+.btn.btn-warning.custom-btn:hover {
+    color: #fff;
+    background: rgb(224, 151, 25);
+    border: none;
+}
+
+.btn.btn-success.custom-btn:hover {
+    color: #fff;
+    background: #1c8756;
+    border: none;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 10px;
+    border-bottom: 2px solid #999;
+}
+
+table {
+    padding: 10px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+.side-menu {
+    position: fixed;
+    background: #e3e2e2;
+    width: 20vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu .logo-img {
+    width: 15vw;
+    display: block;
+    max-height: 90px;
+    margin-left: 13px;
+    margin-right: 15px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.side-menu ul {
+    /* list-style: none; */
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu li {
+    font-size: 18px;
+    padding-bottom: 16px;
+    color: #379bcc;
+    display: block;
+    position: relative;
+}
+
+.side-menu ul li a,
+.side-menu ul li,
+button.side-menu-button {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #379bcc;
+    font-size: 14px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.side-menu li a:hover,
+.side-menu ul li:hover,
+button.side-menu-button:hover {
+    color: #43ab49;
+    background-color: #fff;
+}
+
+.side-menu ul li a,
+button.side-menu-button {
+    cursor: pointer;
+}
+
+.side-menu ul li .submenu {
+    display: none;
+    /* padding-left: 20px; */
+    list-style: none;
+    margin: 0;
+}
+
+.side-menu ul li .submenu.open {
+    display: block;
+}
+
+.side-menu ul li .submenu li a {
+    font-size: 14px;
+    /* padding-left: 4px; */
+    /* Indent submenu items */
+}
+
+.container {
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+    background: #fff;
+}
+
+.container .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 5vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.container .header .nav {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.container .content {
+    position: relative;
+    margin-top: 10vh;
+    min-height: 90vh;
+    background: #ffffff;
+}
+
+.container .content .cards {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    background: white;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.3s ease;
+    overflow: visible;
+    /* Ensure that the overflow is visible */
+    padding-top: 20px;
+    /* Add padding to the top */
+    padding-right: 20px;
+    /* Add padding to the right */
+}
+
+.icon-container {
+    position: absolute;
+    top: -30px;
+    /* Adjust as needed to half float outside the card */
+    left: 16px;
+    /* Adjust as needed to half float outside the card */
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Add a small shadow */
+}
+
+.icon-card {
+    font-size: 24px;
+    color: #333;
+    /* Adjust icon color */
+}
+
+.box {
+    position: absolute;
+    top: 20px;
+    /* Adjust as needed */
+    right: 20px;
+    /* Align to the right */
+    text-align: right;
+    /* Align text to the right */
+    color: #333;
+}
+
+.box h1 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.box h3 {
+    font-size: 14px;
+    font-weight: lighter;
+
+}
+
+.divider {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /* Center horizontally */
+}
+
+.updated-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.updated-info i {
+    margin-right: 5px;
+    font-weight: lighter;
+    color: #aaa;
+}
+
+.container .content .content-2 {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+
+
+.outer-card {
+    background-color: rgb(255, 255, 255);
+    margin: 0 16px;
+    padding: 16px;
+    border-radius: 10px;
+    min-height: 100px;
+    position: relative;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.3s ease;
+
+
+}
+
+.floating-card {
+    position: relative;
+    margin-top: -50px;
+    margin-bottom: 20px;
+    background-color: #2fa5de;
+    border-radius: 5px;
+
+}
+
+.floating-card.chart {
+    position: relative;
+    background-color: rgba(47, 165, 222, .2);
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+
+.label {
+    position: relative;
+    font-weight: bold;
+    color: rgb(58, 54, 54);
+    margin-bottom: 30px;
+}
+
+.content-2 .table {
+    bottom: 32px;
+}
+
+.table thead tr th {
+    color: #2fa5de;
+    font-weight: normal;
+    font-size: 14px;
+
+}
+
+.table tbody tr td {
+    color: #111;
+    font-weight: light;
+    font-size: 14px;
+
+}
+
+.tableLabels {
+    padding: 8px;
+}
+
+.tableLabels h3 {
+    font-weight: normal;
+    font-size: 20px;
+    color: #fff;
+
+}
+
+.tableLabels p {
+    font-weight: lighter;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* Ensure the .col div is positioned relatively to position the icon inside it */
+.col.position-relative {
+    position: relative;
+}
+
+/* Ensure the .col div is positioned relatively to position the icon inside it */
+.col.position-relative {
+    position: relative;
+}
+
+/* Style the dropdown icon */
+.dropdown-icon {
+    position: absolute;
+    right: 15px;
+    /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Ensures the dropdown still works */
+    color: #6c757d;
+    padding-right: 8px;
+}
+
+ 
+/* Hide the icon on smaller screens */
+@media screen and (max-width: 768px) {
+    .dropdown-icon {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1050px) {
+    .side-menu li {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .side-menu li span {
+        display: none;
+    }
+
+    .side-menu {
+        align-items: center;
+    }
+
+    .side-menu li img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .side-menu li i {
+        font-size: 4vw;
+        padding-right: 24px;
+    }
+
+    .side-menu li i:hover {
+        color: #43ab49;
+        /* padding: 8px 38px; */
+    }
+}
+
+@media screen and (max-width:536px) {
+    .brand-name h1 {
+        font-size: 16px;
+    }
+
+    .container .content .cards {
+        justify-content: center;
+    }
+
+    .side-menu li img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .container .content .content-2 .recent-payments table th:nth-child(2),
+    .container .content .content-2 .recent-payments table td:nth-child(2) {
+        display: none;
+    }
+}

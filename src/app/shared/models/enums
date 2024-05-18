@@ -1,0 +1,11 @@
+export enum SchoolType {
+  Primary = 'Primary',
+  Secondary = 'Secondary',
+  IGSE = 'IGSE'
+}
+
+export enum Product {
+  Analytics = 'Zeraki Analytics',
+  Timetable = 'Zeraki Timetable',
+  Finance = 'Zeraki Finance'
+}

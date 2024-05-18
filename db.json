@@ -1,0 +1,381 @@
+{
+  "schools": [
+    {
+      "id": "1",
+      "name": "School A",
+      "type": "Primary",
+      "product": "Zeraki Timetable",
+      "county": "County A",
+      "registrationDate": "2023-01-15",
+      "contactInformation": "123-456-7890",
+      "balance": 2000
+    },
+    {
+      "id": "2",
+      "name": "School B",
+      "type": "Secondary",
+      "product": "Zeraki Timetable",
+      "county": "County B",
+      "registrationDate": "2022-05-30",
+      "contactInformation": "987-654-3210",
+      "balance": 1500
+    },
+    {
+      "id": "3",
+      "name": "School C",
+      "type": "Primary",
+      "product": "Zeraki Analytics",
+      "county": "County C",
+      "registrationDate": "2021-09-20",
+      "contactInformation": "456-789-0123",
+      "balance": 3000
+    },
+    {
+      "id": "4",
+      "name": "School D",
+      "type": "Secondary",
+      "product": "Zeraki Timetable",
+      "county": "County D",
+      "registrationDate": "2023-03-14",
+      "contactInformation": "321-654-9870",
+      "balance": 1200
+    },
+    {
+      "id": "5",
+      "name": "School E",
+      "type": "Primary",
+      "product": "Zeraki Finance",
+      "county": "County E",
+      "registrationDate": "2022-07-08",
+      "contactInformation": "654-321-0987",
+      "balance": 2200
+    },
+    {
+      "id": "6",
+      "name": "School F",
+      "type": "Secondary",
+      "product": "Zeraki Finance",
+      "county": "County F",
+      "registrationDate": "2021-11-29",
+      "contactInformation": "789-012-3456",
+      "balance": 1400
+    },
+    {
+      "id": "7",
+      "name": "School G",
+      "type": "IGCSE",
+      "product": "Zeraki Analytics",
+      "county": "County G",
+      "registrationDate": "2023-05-10",
+      "contactInformation": "012-345-6789",
+      "balance": 2500
+    },
+    {
+      "id": "8",
+      "name": "School H",
+      "type": "IGCSE",
+      "product": "Zeraki Finance",
+      "county": "County H",
+      "registrationDate": "2022-01-22",
+      "contactInformation": "890-123-4567",
+      "balance": 1600
+    },
+    {
+      "id": "9",
+      "name": "School I",
+      "type": "IGCSE",
+      "product": "Zeraki Analytics",
+      "county": "County I",
+      "registrationDate": "2021-04-17",
+      "contactInformation": "098-765-4321",
+      "balance": 2800
+    },
+    {
+      "id": "10",
+      "name": "School J",
+      "type": "Secondary",
+      "product": "Zeraki Timetable",
+      "county": "County J",
+      "registrationDate": "2023-08-05",
+      "contactInformation": "567-890-1234",
+      "balance": 1300
+    }
+  ],
+  "invoices": [
+    {
+      "id": "0",
+      "schoolId": 1,
+      "invoiceNumber": "INV01",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-05-17T23:00:26.740Z",
+      "dueDate": "2024-05-17T23:00:26.740Z",
+      "amount": 900,
+      "paidAmount": 900,
+      "balance": 0,
+      "completionStatus": "Paid",
+      "daysUntilDue": 7
+    },
+    {
+      "id": "1",
+      "schoolId": 2,
+      "invoiceNumber": "INV02",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2024-04-17T23:00:26.740Z",
+      "dueDate": "2024-04-24T23:00:26.740Z",
+      "amount": 1200,
+      "paidAmount": 1200,
+      "balance": 0,
+      "completionStatus": "Paid",
+      "daysUntilDue": 0
+    },
+    {
+      "id": "2",
+      "schoolId": 3,
+      "invoiceNumber": "INV03",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-03-15T23:00:26.740Z",
+      "dueDate": "2024-03-22T23:00:26.740Z",
+      "amount": 1100,
+      "paidAmount": 1100,
+      "balance": 0,
+      "completionStatus": "Partially Paid",
+      "daysUntilDue": -30
+    },
+    {
+      "id": "3",
+      "schoolId": 4,
+      "invoiceNumber": "INV04",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2024-02-14T23:00:26.740Z",
+      "dueDate": "2024-02-21T23:00:26.740Z",
+      "amount": 1500,
+      "paidAmount": 1500,
+      "balance": 0,
+      "completionStatus": "Partially Paid",
+      "daysUntilDue": -60
+    },
+    {
+      "id": "4",
+      "schoolId": 5,
+      "invoiceNumber": "INV05",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-01-10T23:00:26.740Z",
+      "dueDate": "2024-01-17T23:00:26.740Z",
+      "amount": 1300,
+      "paidAmount": 1200,
+      "balance": 100,
+      "completionStatus": "Paid",
+      "daysUntilDue": -90
+    },
+    {
+      "id": "5",
+      "schoolId": 6,
+      "invoiceNumber": "INV06",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2023-12-25T23:00:26.740Z",
+      "dueDate": "2024-01-01T23:00:26.740Z",
+      "amount": 1400,
+      "paidAmount": 1400,
+      "balance": 0,
+      "completionStatus": "Paid",
+      "daysUntilDue": -120
+    },
+    {
+      "id": "6",
+      "schoolId": 7,
+      "invoiceNumber": "INV07",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2023-11-30T23:00:26.740Z",
+      "dueDate": "2023-12-07T23:00:26.740Z",
+      "amount": 1700,
+      "paidAmount": 1700,
+      "balance": 0,
+      "completionStatus": "Paid",
+      "daysUntilDue": -150
+    },
+    {
+      "id": "7",
+      "schoolId": 8,
+      "invoiceNumber": "INV08",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2023-10-25T23:00:26.740Z",
+      "dueDate": "2023-11-01T23:00:26.740Z",
+      "amount": 1800,
+      "paidAmount": 1800,
+      "balance": 0,
+      "completionStatus": "Partially Paid",
+      "daysUntilDue": -180
+    },
+    {
+      "id": "8",
+      "schoolId": 9,
+      "invoiceNumber": "INV09",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2023-09-15T23:00:26.740Z",
+      "dueDate": "2023-09-22T23:00:26.740Z",
+      "amount": 2000,
+      "paidAmount": 1900,
+      "balance": 100,
+      "completionStatus": "Paid",
+      "daysUntilDue": -210
+    },
+    {
+      "id": "9",
+      "schoolId": 10,
+      "invoiceNumber": "INV10",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2023-08-10T23:00:26.740Z",
+      "dueDate": "2023-08-17T23:00:26.740Z",
+      "amount": 1600,
+      "paidAmount": 1500,
+      "balance": 100,
+      "completionStatus": "Paid",
+      "daysUntilDue": -240
+    },
+    {
+      "id": 0,
+      "schoolId": 0,
+      "invoiceNumber": "INV01",
+      "invoiceItem": "",
+      "creationDate": "2024-05-18T19:36:15.469Z",
+      "dueDate": "2024-05-18T19:36:15.469Z",
+      "amount": 0,
+      "paidAmount": 0,
+      "balance": 0,
+      "completionStatus": "",
+      "daysUntilDue": 0
+    },
+    {
+      "id": "beb8"
+    },
+    {
+      "id": "4413"
+    },
+    {
+      "id": "b665"
+    },
+    {
+      "id": "2338"
+    },
+    {
+      "id": "4c73"
+    },
+    {
+      "id": "00c6"
+    }
+  ],
+  "collections": [
+    {
+      "id": "1",
+      "collectionNumber": "COL001",
+      "invoiceNumber": "INV01",
+      "dateOfCollection": "2024-03-10",
+      "status": "Valid",
+      "amount": 500
+    },
+    {
+      "id": "2",
+      "collectionNumber": "COL002",
+      "invoiceNumber": "INV02",
+      "dateOfCollection": "2024-03-12",
+      "status": "Valid",
+      "amount": 75
+    },
+    {
+      "id": "3",
+      "collectionNumber": "COL003",
+      "invoiceNumber": "INV03",
+      "dateOfCollection": "2024-02-25",
+      "status": "Valid",
+      "amount": 900
+    },
+    {
+      "id": "4",
+      "collectionNumber": "COL004",
+      "invoiceNumber": "INV04",
+      "dateOfCollection": "2024-02-28",
+      "status": "Bounced",
+      "amount": 100
+    },
+    {
+      "id": "5",
+      "collectionNumber": "COL005",
+      "invoiceNumber": "INV05",
+      "dateOfCollection": "2024-01-20",
+      "status": "Valid",
+      "amount": 1100
+    },
+    {
+      "id": "6",
+      "collectionNumber": "COL006",
+      "invoiceNumber": "INV06",
+      "dateOfCollection": "2023-12-30",
+      "status": "Bounced",
+      "amount": 150
+    },
+    {
+      "id": "7",
+      "collectionNumber": "COL007",
+      "invoiceNumber": "INV07",
+      "dateOfCollection": "2023-11-05",
+      "status": "Valid",
+      "amount": 1400
+    },
+    {
+      "id": "8",
+      "collectionNumber": "COL008",
+      "invoiceNumber": "INV08",
+      "dateOfCollection": "2023-10-30",
+      "status": "Bounced",
+      "amount": 200
+    },
+    {
+      "id": "9",
+      "collectionNumber": "COL009",
+      "invoiceNumber": "INV09",
+      "dateOfCollection": "2023-09-25",
+      "status": "Valid",
+      "amount": 1700
+    },
+    {
+      "id": "10",
+      "collectionNumber": "COL010",
+      "invoiceNumber": "INV10",
+      "dateOfCollection": "2023-08-20",
+      "status": "Valid",
+      "amount": 300
+    },
+    {
+      "id": "2a4f",
+      "collectionNumber": "COL1716060169188",
+      "invoiceNumber": "INV03",
+      "dateOfCollection": "2024-05-18T19:22:49.188Z",
+      "status": "Valid",
+      "amount": 100
+    },
+    {
+      "id": "dc75",
+      "collectionNumber": "COL1716060177852",
+      "invoiceNumber": "INV08",
+      "dateOfCollection": "2024-05-18T19:22:57.852Z",
+      "status": "Valid",
+      "amount": 200
+    },
+    {
+      "id": "0d5c",
+      "collectionNumber": "COL1716060582930",
+      "invoiceNumber": "INV01",
+      "dateOfCollection": "2024-05-18T19:29:42.930Z",
+      "status": "Valid",
+      "amount": 100
+    },
+    {
+      "id": "540d",
+      "collectionNumber": "COL1716060907832",
+      "invoiceNumber": "INV04",
+      "dateOfCollection": "2024-05-18T19:35:07.832Z",
+      "status": "Valid",
+      "amount": 200
+    }
+  ]
+}

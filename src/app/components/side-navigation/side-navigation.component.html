@@ -1,0 +1,22 @@
+<div class="side-menu">
+    <div class="logo">
+        <div class="logo-img">
+            <img src="/assets/img/zeraki_analytics_logo.svg" />
+        </div>
+    </div>
+    <ul>
+        <li class="dash"><a routerLink="/dashboard"><i class="fa fa-home"></i>&nbsp;<span>Dashboard</span></a></li>
+
+        <li>
+            <button class="side-menu-button" (click)="toggleSubmenu('schoolManagement')">
+                <i class="fa fa-graduation-cap"></i>&nbsp;<span>School Management</span>
+            </button>
+            <ul [ngClass]="{'submenu': true, 'open': isSubmenuOpen('schoolManagement')}">
+                <li><a routerLink="/schools"><i class="fa fa-book"></i>&nbsp;<span>Schools</span></a></li>
+                <li><a routerLink="/invoices"><i class="fa fa-file"></i>&nbsp;<span>Invoices</span></a></li>
+                <li><a routerLink="/collections"><i class="fa fa-money"></i>&nbsp;<span>Collections</span></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

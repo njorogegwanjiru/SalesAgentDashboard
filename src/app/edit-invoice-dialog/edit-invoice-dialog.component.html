@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Edit Invoice</h2>
+<form (ngSubmit)="onUpdateClick()">
+  <mat-dialog-content>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Invoice Number</mat-label>
+      <input matInput [(ngModel)]="data.invoiceNumber" name="invoiceNumber" required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Invoice Item</mat-label>
+      <input matInput [(ngModel)]="data.invoiceItem" name="invoiceItem" required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Creation Date</mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="data.creationDate" name="creationDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="data.dueDate" name="dueDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="data.amount" name="amount" required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Paid Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="data.paidAmount" name="paidAmount" required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Balance</mat-label>
+      <input matInput type="number" [(ngModel)]="data.balance" name="balance" required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Completion Status</mat-label>
+      <input matInput [(ngModel)]="data.completionStatus" name="completionStatus" required>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline" style="margin: 4px;  ">
+      <mat-label>Days Until Due</mat-label>
+      <input matInput type="number" [(ngModel)]="data.daysUntilDue" name="daysUntilDue" required>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="btn btn-danger custom-btn"  type="button" style="margin: 4px;" (click)="onNoClick()">Cancel</button>
+    <button class="btn btn-success custom-btn"  type="submit" style="margin: 4px;" >Update</button>
+  </mat-dialog-actions>
+</form>

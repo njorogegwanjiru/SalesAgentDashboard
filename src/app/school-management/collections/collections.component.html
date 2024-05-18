@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="header">
+        <app-navbar-component></app-navbar-component>
+    </div>
+    <div class="content">
+        <div class="outer-card">
+            <div class="floating-card">
+                <div class="text-start tableLabels">
+                    <h3>Collections</h3>
+                    <p>All collections made on invoices</p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Invoice Number</th>
+                            <th>Collection Number</th>
+                            <th>Date of Collection</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let collection of filteredCollections">
+                            <td>{{ collection.invoiceNumber }}</td>
+                            <td>{{ collection.collectionNumber }}</td>
+                            <td>{{ collection.dateOfCollection }}</td>
+                            <td>{{ collection.status }}</td>
+                            <td>{{ collection.amount }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success custom-btn d-none d-md-inline" style="margin: 4px;"
+                                    (click)="updateCollectionStatus(collection.id, 'Valid')">Mark Valid</button>
+                                <button type="button" class="btn btn-success custom-btn d-md-none" style="margin: 4px;"
+                                    (click)="updateCollectionStatus(collection.id, 'Valid')">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            
+                                <button type="button" class="btn btn-warning custom-btn d-none d-md-inline" style="margin: 4px;"
+                                    (click)="updateCollectionStatus(collection.id, 'Bounced')">Mark Bounced</button>
+                                <button type="button" class="btn btn-warning custom-btn d-md-none" style="margin: 4px;"
+                                    (click)="updateCollectionStatus(collection.id, 'Bounced')">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            
+                                <button type="button" class="btn btn-danger custom-btn  d-none d-md-inline" style="margin: 4px;"
+                                    (click)="deleteCollection(collection.id)">Delete</button>
+                                <button type="button" class="btn btn-danger custom-btn d-md-none" style="margin: 4px;"
+                                    (click)="deleteCollection(collection.id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

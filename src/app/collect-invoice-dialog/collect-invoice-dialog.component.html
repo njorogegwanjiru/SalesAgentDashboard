@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Collect Payment</h2>
+<form [formGroup]="collectForm" (ngSubmit)="onCollectClick()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" >
+      <mat-label>Amount</mat-label>
+      <input matInput formControlName="amount" type="number" min="0.01">
+      <mat-error *ngIf="collectForm.get('amount')?.hasError('required')">
+        Amount is required
+      </mat-error>
+      <mat-error *ngIf="collectForm.get('amount')?.hasError('min')">
+        Amount must be greater than 0
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button type="button" class="btn btn-danger custom-btn"  style="margin: 4px;" (click)="onNoClick()">Cancel</button>
+    <button  class="btn btn-success custom-btn" style="margin: 4px;"  type="submit"
+      [disabled]="!collectForm.valid">Collect</button>
+  </div>
+</form>

@@ -1,0 +1,208 @@
+<div class="container">
+    <div class="header">
+        <app-navbar-component></app-navbar-component>
+    </div>
+    <div class="content">
+        <!--A. Top Card Metrics   -->
+        <div class="cards">
+            <div class="card">
+                <div class="icon-container">
+                    <div class="icon-card">
+                        <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>Collections</h3>
+                    <h1>{{ metrics.totalCollections }}</h1>
+                </div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon-container">
+                    <div class="icon-card">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>Sign-ups</h3>
+                    <h1> {{ metrics.totalSignUps }}</h1>
+
+                </div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon-container">
+                    <div class="icon-card">
+                        <i class="fa fa-money" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <h3>Total Revenue</h3>
+                    <h1> {{metrics.totalRevenue }}</h1>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="icon-container">
+                    <div class="icon-card">
+                        <i class="fa fa-warning" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>Bounced Cheques</h3>
+                    <h1>{{ metrics.numberOfBouncedInvoices }}</h1>
+
+                </div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+        </div>
+
+        <!-- B. Targets Visualization  -->
+        <div class="content-2">
+
+            <div class="outer-card">
+                <div class="floating-card chart">
+                    <canvas id="analyticsChart"></canvas>
+                </div>
+                <div class="label">Zeraki Analytics</div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+
+            <div class="outer-card finance">
+                <div class="floating-card chart">
+                    <canvas id="financeChart"></canvas>
+                </div>
+                <div class="label">Zeraki Finance</div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+
+            <div class="outer-card timetable">
+                <div class="floating-card chart">
+                    <canvas id="timetableChart"></canvas>
+                </div>
+                <div class="label">Zeraki Timetable</div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+        </div>
+
+        <!-- C. Sign ups overview -->
+        <div class="content-2">
+
+            <div class="outer-card">
+                <div class="floating-card chart">
+                    <canvas id="analyticsBarChart"></canvas>
+                </div>
+                <div class="label">Zeraki Analytics</div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+
+            <div class="outer-card finance">
+                <div class="floating-card chart">
+                    <canvas id="financeBarChart"></canvas>
+                </div>
+                <div class="label">Zeraki Finance</div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+
+            <div class="outer-card timetable">
+                <div class="floating-card chart">
+                    <canvas id="timeTableBarChart"></canvas>
+                </div>
+                <div class="label">Zeraki Timetable</div>
+                <div class="divider"></div>
+                <div class="updated-info">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Just updated
+                </div>
+            </div>
+        </div>
+        <!-- D. Upcoming Invoices -->
+        <div class="content-2">
+            <div class="outer-card">
+                <div class="floating-card">
+                    <div class="text-start tableLabels">
+                        <h3>Upcoming Invoices</h3>
+                        <p>Upcoming invoices for today</p>
+                    </div>
+                </div>
+
+                <div class="table table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Item</th>
+                                <th>Creation Date</th>
+                                <th>Due Date</th>
+                                <th>Amount</th>
+                                <th>Paid Amount</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                                <th>Due In</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let invoice of upcomingInvoices">
+                                <td>{{ invoice.invoiceNumber }}</td>
+                                <td>{{ invoice.invoiceItem }}</td>
+                                <td>{{ invoice.creationDate }}</td>
+                                <td>{{ invoice.dueDate }}</td>
+                                <td>{{ invoice.amount }}</td>
+                                <td>{{ invoice.paidAmount }}</td>
+                                <td>{{ invoice.balance }}</td>
+                                <td>{{ invoice.completionStatus }}</td>
+                                <td>{{ invoice.daysUntilDue }} days</td>
+                                <td>
+                                    <!-- Button for collecting payment   -->
+                                    <button type="button" class="btn btn-primary custom-btn d-none d-md-inline"
+                                        style="margin: 4px;" (click)="openCollectInvoiceDialog(invoice)">Add Collection</button>
+                                    <button type="button" class="btn btn-primary custom-btn d-md-none"
+                                        style="margin: 4px;" (click)="openCollectInvoiceDialog(invoice)">
+                                        <i class="fa fa-money"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>

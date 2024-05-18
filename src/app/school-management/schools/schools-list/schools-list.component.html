@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="header">
+        <app-navbar-component></app-navbar-component>
+    </div>
+    <div class="content">
+        <div class="outer-card">
+            <div class="floating-card">
+                <div class="text-start tableLabels">
+                    <h3>Schools</h3>
+                    <p>All enrolled Schools</p>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." value="B" [(ngModel)]="searchText"
+                    (input)="applyFilter()">
+            </div>
+            <div class="  table-responsive">
+
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let school of filteredSchools">
+                            <td>{{ school.name }}</td>
+                            <td class="text-right">
+                                <button type="button" class="btn btn-primary custom-btn"
+                                    (click)="viewSchoolDetails(school.id)">
+                                    View Details
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="currentPage"
+                    [pageSize]="itemsPerPage"></ngb-pagination>
+
+            </div>
+        </div>
+    </div>
+</div>

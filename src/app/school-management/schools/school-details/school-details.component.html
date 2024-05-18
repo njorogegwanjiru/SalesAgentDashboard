@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="header">
+        <app-navbar-component></app-navbar-component>
+    </div>
+    <div class="content">
+        <div class="outer-card">
+            <div class="floating-card">
+                <div class="text-start tableLabels">
+                    <h3>{{ schoolDetails?.name }}</h3>
+                    <p>School Details</p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+
+                        <tr>
+                            <th>Type</th>
+                            <td>{{ schoolDetails?.type }}</td>
+                        </tr>
+                        <tr>
+                            <th>Product(s)</th>
+                            <td>{{ schoolDetails?.product }}</td>
+                        </tr>
+                        <tr>
+                            <th>County</th>
+                            <td>{{ schoolDetails?.county }}</td>
+                        </tr>
+                        <tr>
+                            <th>Registration Date</th>
+                            <td>{{ schoolDetails?.registrationDate }}</td>
+                        </tr>
+                        <tr>
+                            <th>Contact Information</th>
+                            <td>{{ schoolDetails?.contactInformation }}</td>
+                        </tr>
+                        <tr>
+                            <th>Balance</th>
+                            <td>{{ schoolDetails?.balance }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="btn btn-primary custom-btn" (click)="viewInvoices(schoolDetails!.id)"
+                style="margin: 10px;">
+                View related Invoices
+            </button>
+            <button type="button" class="btn btn-primary custom-btn" (click)="viewCollections(schoolDetails!.id)"
+                style="margin: 10px;">
+                View related Collections
+            </button>
+
+        </div>
+    </div>
+</div>
