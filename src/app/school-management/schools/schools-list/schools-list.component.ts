@@ -33,10 +33,17 @@ export class SchoolsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.schools = this.schoolService.getSchools();
-    this.filterSchools();
-
+    this.schoolService.getSchools().subscribe(
+      schools => {
+        this.schools = schools;
+        this.filterSchools();
+      },
+      error => {
+        console.error('Error fetching schools:', error);
+      }
+    );
   }
+  
   viewSchoolDetails(schoolId: string) {
     // Navigate to the SchoolDetailsComponent with the schoolId as a route parameter
     this.router.navigate(['/schoolDetails', schoolId]);

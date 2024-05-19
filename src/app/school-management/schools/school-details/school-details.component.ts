@@ -38,15 +38,23 @@ export class SchoolDetailsComponent implements OnInit {
   }
 
   fetchSchoolDetails() {
-    const schools = this.schoolService.getSchools();
-    this.schoolDetails = schools.find(school => school.id === this.schoolId);
-    this.isLoading = false;
-    if (this.schoolDetails) {
-      console.log('School details:', this.schoolDetails);
-    } else {
-      console.error('School not found.');
-    }
+    this.schoolService.getSchools().subscribe(
+      schools => {
+        this.schoolDetails = schools.find(school => school.id === this.schoolId);
+        this.isLoading = false;
+        if (this.schoolDetails) {
+          console.log('School details:', this.schoolDetails);
+        } else {
+          console.error('School not found.');
+        }
+      },
+      error => {
+        console.error('Error fetching schools:', error);
+        this.isLoading = false; // Ensure isLoading is set to false even in case of error
+      }
+    );
   }
+  
 
   viewInvoices(schoolId: number): void {
     this.router.navigate(['/invoices', schoolId]);

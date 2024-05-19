@@ -49,6 +49,56 @@
       "registrationDate": "2022-07-08",
       "contactInformation": "654-321-0987",
       "balance": 2200
+    },
+    {
+      "id": "6",
+      "name": "School F",
+      "type": "Secondary",
+      "product": "Zeraki Finance",
+      "county": "County F",
+      "registrationDate": "2021-11-29",
+      "contactInformation": "789-012-3456",
+      "balance": 1400
+    },
+    {
+      "id": "7",
+      "name": "School G",
+      "type": "IGCSE",
+      "product": "Zeraki Analytics",
+      "county": "County G",
+      "registrationDate": "2023-05-10",
+      "contactInformation": "012-345-6789",
+      "balance": 2500
+    },
+    {
+      "id": "8",
+      "name": "School H",
+      "type": "IGCSE",
+      "product": "Zeraki Finance",
+      "county": "County H",
+      "registrationDate": "2022-01-22",
+      "contactInformation": "890-123-4567",
+      "balance": 1600
+    },
+    {
+      "id": "9",
+      "name": "School I",
+      "type": "IGCSE",
+      "product": "Zeraki Analytics",
+      "county": "County I",
+      "registrationDate": "2021-04-17",
+      "contactInformation": "098-765-4321",
+      "balance": 2800
+    },
+    {
+      "id": "10",
+      "name": "School J",
+      "type": "Secondary",
+      "product": "Zeraki Timetable",
+      "county": "County J",
+      "registrationDate": "2023-08-05",
+      "contactInformation": "567-890-1234",
+      "balance": 1300
     }
   ],
   "invoices": [
@@ -116,7 +166,59 @@
       "balance": 0,
       "completionStatus": "Paid",
       "daysUntilDue": -120
-    } 
+    },
+    {
+      "id": "6",
+      "schoolId": 7,
+      "invoiceNumber": "INV07",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2023-11-30T23:00:26.740Z",
+      "dueDate": "2023-12-07T23:00:26.740Z",
+      "amount": 1700,
+      "paidAmount": 1700,
+      "balance": 0,
+      "completionStatus": "Paid",
+      "daysUntilDue": -150
+    },
+    {
+      "id": "7",
+      "schoolId": 8,
+      "invoiceNumber": "INV08",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2023-10-25T23:00:26.740Z",
+      "dueDate": "2023-11-01T23:00:26.740Z",
+      "amount": 1800,
+      "paidAmount": 1800,
+      "balance": 0,
+      "completionStatus": "Partially Paid",
+      "daysUntilDue": -180
+    },
+    {
+      "id": "8",
+      "schoolId": 9,
+      "invoiceNumber": "INV09",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2023-09-15T23:00:26.740Z",
+      "dueDate": "2023-09-22T23:00:26.740Z",
+      "amount": 2000,
+      "paidAmount": 1900,
+      "balance": 100,
+      "completionStatus": "Paid",
+      "daysUntilDue": -210
+    },
+    {
+      "id": 0,
+      "schoolId": 0,
+      "invoiceNumber": "INV01",
+      "invoiceItem": "",
+      "creationDate": "2024-05-18T19:36:15.469Z",
+      "dueDate": "2024-05-18T19:36:15.469Z",
+      "amount": 0,
+      "paidAmount": 0,
+      "balance": 0,
+      "completionStatus": "",
+      "daysUntilDue": 0
+    }
   ],
   "collections": [
     {
@@ -158,6 +260,62 @@
       "dateOfCollection": "2024-01-20",
       "status": "Valid",
       "amount": 1100
-    } 
+    },
+    {
+      "id": "6",
+      "collectionNumber": "COL006",
+      "invoiceNumber": "INV06",
+      "dateOfCollection": "2023-12-30",
+      "status": "Bounced",
+      "amount": 150
+    },
+    {
+      "id": "7",
+      "collectionNumber": "COL007",
+      "invoiceNumber": "INV07",
+      "dateOfCollection": "2023-11-05",
+      "status": "Valid",
+      "amount": 1400
+    },
+    {
+      "id": "8",
+      "collectionNumber": "COL008",
+      "invoiceNumber": "INV08",
+      "dateOfCollection": "2023-10-30",
+      "status": "Bounced",
+      "amount": 200
+    },
+    {
+      "id": "9",
+      "collectionNumber": "COL009",
+      "invoiceNumber": "INV09",
+      "dateOfCollection": "2023-09-25",
+      "status": "Valid",
+      "amount": 1700
+    },
+    {
+      "id": "10",
+      "collectionNumber": "COL010",
+      "invoiceNumber": "INV10",
+      "dateOfCollection": "2023-08-20",
+      "status": "Valid",
+      "amount": 300
+    },
+    {
+      "id": "2a4f",
+      "collectionNumber": "COL1716060169188",
+      "invoiceNumber": "INV03",
+      "dateOfCollection": "2024-05-18T19:22:49.188Z",
+      "status": "Valid",
+      "amount": 100
+    },
+    {
+      "id": "dc75",
+      "collectionNumber": "COL1716060177852",
+      "invoiceNumber": "INV08",
+      "dateOfCollection": "2024-05-18T19:22:57.852Z",
+      "status": "Valid",
+      "amount": 200
+    }
   ]
 }

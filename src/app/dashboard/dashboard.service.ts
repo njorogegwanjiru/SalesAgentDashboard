@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { Collection } from '../shared/models/collection.model';
 import { Invoice } from '../shared/models/invoice.model';
 import { Metrics } from '../shared/models/metrics.model';
 import { ProductUsage } from '../shared/models/productUsage.model';
-import { map, switchMap } from 'rxjs/operators';  
+import { map, switchMap } from 'rxjs/operators';
+import { ApiResponse } from '../shared/models/api-response.model';
 
 import { School } from '../shared/models/school.model';
 
@@ -17,21 +18,29 @@ import { School } from '../shared/models/school.model';
 export class DashboardService {
 
   constructor(private http: HttpClient) { }
-  private apiUrl = 'http://localhost:3000/';
-  private collectionsUrl = 'http://localhost:3000/collections';
-  private invoicesUrl = 'http://localhost:3000/invoices';
+  private apiUrl = 'https://api.jsonbin.io/v3/b/664921c0acd3cb34a84a0579/';
+   
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-BIN-META': 'FALSE',
+  });
 
-  // Fetch data from your API endpoint
   getSchools(): Observable<School[]> {
-    return this.http.get<School[]>(`${this.apiUrl}schools`);
+    return this.http.get<ApiResponse>(this.apiUrl, { headers: this.headers }).pipe(
+      map(response => response.record.schools)
+    );
   }
 
   getInvoices(): Observable<Invoice[]> {
-    return this.http.get<Invoice[]>(`${this.apiUrl}invoices`);
+    return this.http.get<ApiResponse>(this.apiUrl, { headers: this.headers }).pipe(
+      map(response => response.record.invoices)
+    );
   }
 
   getCollections(): Observable<Collection[]> {
-    return this.http.get<Collection[]>(`${this.apiUrl}collections`);
+    return this.http.get<ApiResponse>(this.apiUrl, { headers: this.headers }).pipe(
+      map(response => response.record.collections)
+    );
   }
 
 
@@ -42,7 +51,7 @@ export class DashboardService {
       collections: this.getCollections()
     });
   }
-  
+
   // Calculate metrics
   calculateMetrics(data: any): Metrics {
     const totalCollections = data.collections.length;
@@ -85,38 +94,52 @@ export class DashboardService {
 
   getUpcomingInvoices(daysUntilDue: number): Observable<any[]> {
     return this.getInvoices().pipe(
-         map(invoices => invoices.filter(invoice => {
-          const dueDate = new Date(invoice.dueDate);
-          const today = new Date();
-          const timeDiff = dueDate.getTime() - today.getTime();
-          const dayDiff = timeDiff / (1000 * 3600 * 24);
-          return dayDiff <= daysUntilDue;
+      map(invoices => invoices.filter(invoice => {
+        const dueDate = new Date(invoice.dueDate);
+        const today = new Date();
+        const timeDiff = dueDate.getTime() - today.getTime();
+        const dayDiff = timeDiff / (1000 * 3600 * 24);
+        return dayDiff <= daysUntilDue;
       }))
     );
   }
 
+  updateData(record: ApiResponse['record']): Observable<any> {
+    return this.http.put(this.apiUrl, { record }, { headers: this.headers });
+  }
+  
+
   collectPayment(invoiceId: number, amount: number): Observable<any> {
-    return this.http.get<Invoice>(`${this.invoicesUrl}/${invoiceId}`).pipe(
-      switchMap((invoice: Invoice) => {
+    return this.http.get<ApiResponse>(this.apiUrl, { headers: this.headers }).pipe(
+      switchMap((data: ApiResponse) => {
+        // Find the invoice and update it
+        const invoice = data.record.invoices.find(inv => inv.id === invoiceId);
+        if (!invoice) {
+          throw new Error('Invoice not found');
+        }
+
         const updatedPaidAmount = invoice.paidAmount + amount;
         const updatedBalance = invoice.amount - updatedPaidAmount;
 
-        return forkJoin({
-          updateInvoice: this.http.patch(`${this.invoicesUrl}/${invoiceId}`, {
-            paidAmount: updatedPaidAmount,
-            balance: updatedBalance
-          }),
-          addCollection: this.http.post(this.collectionsUrl, {
-            collectionNumber: `COL${Date.now()}`,
-            invoiceNumber: invoice.invoiceNumber,
-            dateOfCollection: new Date().toISOString(),
-            status: 'Valid',
-            amount: amount
-          })
-        });
+        invoice.paidAmount = updatedPaidAmount;
+        invoice.balance = updatedBalance;
+
+        // Create a new collection entry
+        const newCollection:Collection = {
+          id: Date.now() + Math.floor(Math.random() * 10000),
+          collectionNumber: `COL${Date.now()}`,
+          invoiceNumber: invoice.invoiceNumber,
+          dateOfCollection: new Date().toISOString(),
+          status: 'Valid',
+          amount: amount
+        };
+        data.record.collections.push(newCollection);
+
+        // Update the data on the server
+        return this.updateData(data.record);
       })
     );
   }
 }
- 
+
 
