@@ -20,14 +20,22 @@ ng serve
 Open the application in your browser:
 Navigate to http://localhost:4200/ to view the application.
 
-Install JSON Server
+## LOCAL DEPLOYMENT
+-Install JSON Server
 npm install -g json-server
 
-Create a JSON file for your data:
+-Create a JSON file for your data:
 eg. db.json
 
-Start the JSON Server
+-Start the JSON Server
 npx json-server db.json
+
+## ONLINE DEPLOYMENT
+App hosted on: 
+[https://sales-agent-dashboard.netlify.app]
+
+Online json data hosted on Json Bin, no configuration needed.
+[https://jsonbin.io/api-reference/bins/get-started]
 
 ## Key Features
 Manage Invoices: Create, update, delete, and view invoices.
