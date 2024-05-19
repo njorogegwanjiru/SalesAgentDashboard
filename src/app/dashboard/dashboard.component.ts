@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
   }
   
   fetchDataAndUpdateMetrics(): void {
-    this.dashboardService.fetchData().subscribe(
+    this.fetchData().subscribe(
       data => {
         this.metrics = this.dashboardService.calculateMetrics(data);
         this.getUpcomingInvoices(5);
