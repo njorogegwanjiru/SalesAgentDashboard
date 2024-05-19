@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
- import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
- import { SchoolService } from '../school.service';
+import { SchoolService } from '../school.service';
 import { NavbarComponentComponent } from "../../../components/navbar-component/navbar-component.component";
 import { School } from '../../../shared/models/school.model';
 
@@ -50,17 +49,17 @@ export class SchoolDetailsComponent implements OnInit {
       },
       error => {
         console.error('Error fetching schools:', error);
-        this.isLoading = false; // Ensure isLoading is set to false even in case of error
+        this.isLoading = false;
       }
     );
   }
-  
+
 
   viewInvoices(schoolId: number): void {
     this.router.navigate(['/invoices', schoolId]);
   }
 
   viewCollections(schoolId: number): void {
-    this.router.navigate(['/collections', schoolId]);  
+    this.router.navigate(['/collections', schoolId]);
   }
 }
