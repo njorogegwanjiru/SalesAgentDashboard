@@ -65,14 +65,29 @@ export class DashboardComponent implements OnInit {
   }
 
   collectPayment(invoiceId: number, amount: number): void {
-    this.dashboardService.collectPayment(invoiceId, amount).subscribe(response => {
-      console.log('Payment collected:', response);
-      this.dashboardService.fetchData().subscribe(data => {
+    this.dashboardService.collectPayment(invoiceId, amount).subscribe(
+      response => {
+        console.log('Payment collected:', response);
+        this.fetchDataAndUpdateMetrics();
+      },
+      error => {
+        console.error('Error collecting payment:', error);
+      }
+    );
+  }
+  
+  fetchDataAndUpdateMetrics(): void {
+    this.dashboardService.fetchData().subscribe(
+      data => {
         this.metrics = this.dashboardService.calculateMetrics(data);
         this.getUpcomingInvoices(5);
-      });
-    });
+      },
+      error => {
+        console.error('Error fetching data:', error);
+      }
+    );
   }
+  
 
   openCollectInvoiceDialog(invoice: Invoice): void {
     const dialogRef = this.dialog.open(CollectInvoiceDialogComponent, {

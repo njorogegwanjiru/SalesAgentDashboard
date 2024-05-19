@@ -142,8 +142,6 @@ export class InvoicesComponent implements OnInit {
     });
   }
 
-
-
   cancelEdit(): void {
     this.selectedInvoice = null; // Cancel editing
   }
