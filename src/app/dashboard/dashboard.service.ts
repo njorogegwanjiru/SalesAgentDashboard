@@ -5,7 +5,7 @@ import { Collection } from '../shared/models/collection.model';
 import { Invoice } from '../shared/models/invoice.model';
 import { Metrics } from '../shared/models/metrics.model';
 import { ProductUsage } from '../shared/models/productUsage.model';
-import { map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ApiResponse } from '../shared/models/api-response.model';
 
 import { School } from '../shared/models/school.model';
@@ -19,10 +19,12 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
   private apiUrl = 'https://api.jsonbin.io/v3/b/664a4001ad19ca34f86bfc91/';
-   
+
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'X-BIN-META': 'FALSE',
+    'X-Master-Key':'$2a$10$RLLhLvU0bWDNRlFD9l9lK.gFXc3xqcAd9JY0iTWxtIrAXY1HcKqzO',
+    'X-ACCESS-KEY':'$2a$10$Gki27F0iNpxlmsMMTDZxheFRTtzlqhWQyOqatD7cZpOBSSVUUY/C2'
   });
 
   getSchools(): Observable<School[]> {
@@ -104,42 +106,54 @@ export class DashboardService {
     );
   }
 
-  updateData(record: ApiResponse['record']): Observable<any> {
-    return this.http.put(this.apiUrl, { record }, { headers: this.headers });
-  }
-  
 
   collectPayment(invoiceId: number, amount: number): Observable<any> {
     return this.http.get<ApiResponse>(this.apiUrl, { headers: this.headers }).pipe(
       switchMap((data: ApiResponse) => {
         // Find the invoice and update it
-        const invoice = data.record.invoices.find(inv => inv.id === invoiceId);
-        if (!invoice) {
+        const invoiceIndex = data.record.invoices.findIndex(inv => inv.id === invoiceId);
+        if (invoiceIndex === -1) {
           throw new Error('Invoice not found');
         }
-
+  
+        const invoice = data.record.invoices[invoiceIndex];
         const updatedPaidAmount = invoice.paidAmount + amount;
         const updatedBalance = invoice.amount - updatedPaidAmount;
-
+  
         invoice.paidAmount = updatedPaidAmount;
         invoice.balance = updatedBalance;
-
+  
         // Create a new collection entry
-        const newCollection:Collection = {
+        const newCollection: Collection = {
           id: Date.now() + Math.floor(Math.random() * 10000),
           collectionNumber: `COL${Date.now()}`,
           invoiceNumber: invoice.invoiceNumber,
-          dateOfCollection: new Date().toISOString(),
+          dateOfCollection: new Date().toISOString().split('T')[0], // Only date part
           status: 'Valid',
           amount: amount
         };
         data.record.collections.push(newCollection);
-
+  
+        // Log updates for debugging
+        console.log("New collection added: ", newCollection);
+        console.log("Updated invoice: ", data.record.invoices[invoiceIndex]);
+  
+        // Prepare data for PUT request
+        const updatePayload = { record: data.record };
+  
         // Update the data on the server
-        return this.updateData(data.record);
+        return this.http.put<ApiResponse>(this.apiUrl, updatePayload, { headers: this.headers }).pipe(
+          tap(response => console.log("Server response:", response)),
+          catchError(error => {
+            console.error('Error updating server:', error);
+            throw error;
+          })
+        );
       })
     );
   }
+  
+
 }
 
 

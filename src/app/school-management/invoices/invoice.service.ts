@@ -15,6 +15,8 @@ export class InvoiceService {
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'X-BIN-META': 'FALSE',
+    'X-Master-Key':'$2a$10$RLLhLvU0bWDNRlFD9l9lK.gFXc3xqcAd9JY0iTWxtIrAXY1HcKqzO',
+    'X-ACCESS-KEY':'$2a$10$Gki27F0iNpxlmsMMTDZxheFRTtzlqhWQyOqatD7cZpOBSSVUUY/C2'
   });
 
 
