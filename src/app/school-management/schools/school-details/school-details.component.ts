@@ -36,10 +36,10 @@ export class SchoolDetailsComponent implements OnInit {
     }
   }
 
-  fetchSchoolDetails() {
-    this.schoolService.getSchools().subscribe(
-      schools => {
-        this.schoolDetails = schools.find(school => school.id === this.schoolId);
+  fetchSchoolDetails(): void {
+    this.schoolService.getSchoolDetails(this.schoolId).subscribe(
+      school => {
+        this.schoolDetails = school;
         this.isLoading = false;
         if (this.schoolDetails) {
           console.log('School details:', this.schoolDetails);
@@ -48,7 +48,7 @@ export class SchoolDetailsComponent implements OnInit {
         }
       },
       error => {
-        console.error('Error fetching schools:', error);
+        console.error('Error fetching school details:', error);
         this.isLoading = false;
       }
     );

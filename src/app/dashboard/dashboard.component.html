@@ -75,6 +75,8 @@
         </div>
 
         <!-- B. Targets Visualization  -->
+        <h2 style="font-size: 20px; font-weight: lighter; color: gray;">Targets Visualization</h2>
+ 
         <div class="content-2">
 
             <div class="outer-card">
@@ -112,6 +114,9 @@
         </div>
 
         <!-- C. Sign ups overview -->
+        <h2 style="font-size: 20px; font-weight: lighter; color: gray;">Sign-ups</h2>
+        <div class="divider"></div>
+
         <div class="content-2">
 
             <div class="outer-card">
@@ -147,7 +152,10 @@
                 </div>
             </div>
         </div>
+
         <!-- D. Upcoming Invoices -->
+        <h2 style="font-size: 20px; font-weight: lighter; color: gray;">Upcoming Invoices</h2>
+
         <div class="content-2">
             <div class="outer-card">
                 <div class="floating-card">
@@ -177,8 +185,8 @@
                             <tr *ngFor="let invoice of upcomingInvoices">
                                 <td>{{ invoice.invoiceNumber }}</td>
                                 <td>{{ invoice.invoiceItem }}</td>
-                                <td>{{ invoice.creationDate }}</td>
-                                <td>{{ invoice.dueDate }}</td>
+                                <td>{{ invoice.creationDate | date: 'mediumDate' }}</td>
+                                <td>{{ invoice.dueDate | date: 'mediumDate' }}</td>
                                 <td>{{ invoice.amount }}</td>
                                 <td>{{ invoice.paidAmount }}</td>
                                 <td>{{ invoice.balance }}</td>

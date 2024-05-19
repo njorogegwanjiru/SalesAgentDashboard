@@ -45,8 +45,8 @@ export class SchoolsListComponent implements OnInit {
   }
   
   viewSchoolDetails(schoolId: string) {
-    // Navigate to the SchoolDetailsComponent with the schoolId as a route parameter
-    this.router.navigate(['/schoolDetails', schoolId]);
+    console.log("selected id:"+schoolId)
+     this.router.navigate(['/schoolDetails', schoolId]);
   }
 
   applyFilter() {
@@ -60,7 +60,9 @@ export class SchoolsListComponent implements OnInit {
      );
     this.totalItems = this.filteredSchools.length;
   }
+
   onPageChange(page: number) {
     this.currentPage = page;
   }
+
 }

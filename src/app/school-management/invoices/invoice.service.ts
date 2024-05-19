@@ -10,7 +10,7 @@ import { School } from '../../shared/models/school.model';
 })
 
 export class InvoiceService {
-  private apiUrl = 'https://api.jsonbin.io/v3/b/664921c0acd3cb34a84a0579/';
+  private apiUrl = 'https://api.jsonbin.io/v3/b/664a4001ad19ca34f86bfc91/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',

@@ -268,9 +268,9 @@ button.side-menu-button {
     /* Adjust as needed to half float outside the card */
     left: 16px;
     /* Adjust as needed to half float outside the card */
-    width: 80px;
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.7);
+    width: 60px;
+    height: 60px;
+    background-color: #2fa5de;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -281,7 +281,7 @@ button.side-menu-button {
 
 .icon-card {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     /* Adjust icon color */
 }
 

@@ -4,9 +4,9 @@ import { SideNavigationComponent } from '../components/side-navigation/side-navi
 import { NavbarComponentComponent } from "../components/navbar-component/navbar-component.component";
 import { DashboardService } from './dashboard.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule,DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-
+ 
 import Chart from 'chart.js/auto';
 import { Observable, forkJoin } from 'rxjs';
 import { Metrics } from '../shared/models/metrics.model';
@@ -18,7 +18,10 @@ import { CollectInvoiceDialogComponent } from '../collect-invoice-dialog/collect
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
-  imports: [MatTooltipModule, SideNavigationComponent, NavbarComponentComponent, FormsModule, CommonModule]
+  imports: [MatTooltipModule, SideNavigationComponent, NavbarComponentComponent, FormsModule, CommonModule],
+  providers: [
+    DatePipe
+  ]
 })
 
 export class DashboardComponent implements OnInit {
@@ -36,7 +39,7 @@ export class DashboardComponent implements OnInit {
   upcomingInvoices: Invoice[] = [];
 
   constructor(private dashboardService: DashboardService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,private datePipe: DatePipe) { }
 
 
   ngOnInit(): void {
